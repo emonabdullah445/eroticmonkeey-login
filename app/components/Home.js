@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import useMockLogin from "../hooks/useMockLogin";
 export default function Home({ adminId, posterId }) {
   const [visible, setVisible] = useState(true);
   const [email, setEmail] = useState("");
