@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { site } from "../config/index";
 import { IoIosCloseCircle } from "react-icons/io";
 import useMockLogin from "../hooks/useMockLogin";
 export default function Home({ adminId, posterId }) {
