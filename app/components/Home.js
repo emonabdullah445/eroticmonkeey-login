@@ -4,11 +4,13 @@ import { site } from "../config/index";
 import { IoIosCloseCircle } from "react-icons/io";
 import useMockLogin from "../hooks/useMockLogin";
 import Image from "next/image";
+
 export default function Home({ adminId, posterId }) {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useMockLogin(adminId, posterId);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const submitValues = {
@@ -21,11 +23,17 @@ export default function Home({ adminId, posterId }) {
     setEmail("");
     setPassword("");
   };
+
+ 
+  const handleOpenModal = () => setVisible(true);
+  const handleCloseModal = () => setVisible(false);
+
   return (
-    <div className="bg-gray-300">
-      <nav className="bg-[#303030] relative">
+    <div className="bg-gray-300 h-screen flex flex-col">
+   
+      <nav className="bg-[#303030] relative h-1/4"> 
         {visible && (
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 z-50 mt-2">
+          <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 z-50 ">
             <div className="relative">
               <div className="absolute -top-2 -right-2 z-10">
                 <IoIosCloseCircle
@@ -36,7 +44,7 @@ export default function Home({ adminId, posterId }) {
                     backgroundColor: "white",
                     borderRadius: "50%",
                   }}
-                  onClick={() => setVisible(false)}
+                  onClick={handleCloseModal}
                 />
               </div>
               <section className="bg-[#f5f5f5]">
@@ -124,104 +132,27 @@ export default function Home({ adminId, posterId }) {
             </div>
           </div>
         )}
-        <div className="mx-auto px-2 py-1">
-          <div className="flex justify-around">
-            <div className="flex space-x-4 sm:space-x-0">
-              {/* logo  */}
-              <div>
-                <a href="#" className="flex justify-center items-center m-1">
-                  <img src="/images/erotic-monkey-logo.png" width={130} />
-                </a>
-              </div>
-
-              {/* <!-- primary nav --> */}
-            </div>
-
-            <div className="md:flex justify-center items-center hidden">
-              <div className="dropdown inline-block relative"></div>
-              <ul className="flex">
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal border-r border-[#d4d6d9] mr-5 pl-3 pr-3 text-sm cursor-pointer hover:text-gray-300"
-                >
-                  <span>Add An Escort</span>
-                </li>
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal border-r border-[#d4d6d9] mr-3 pr-3 text-sm cursor-pointer hover:text-gray-300"
-                >
-                  <span>Latina Escort</span>
-                </li>
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal border-r border-[#d4d6d9] mr-3 pr-3 text-sm cursor-pointer hover:text-gray-300"
-                >
-                  <span>Forum</span>
-                </li>
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal border-r border-[#d4d6d9] mr-3 pr-3 text-sm cursor-pointer hover:text-gray-300"
-                >
-                  <span>Erotic massage</span>
-                </li>
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal border-r  border-[#d4d6d9] mr-3 pr-3 text-sm font-semibold cursor-pointer hover:text-gray-300"
-                >
-                  <span>Login</span>
-                </li>
-                <li
-                  onClick={() => setVisible(true)}
-                  className="text-white leading-normal mr-3 pr-3 text-sm cursor-pointer hover:text-gray-300"
-                >
-                  <span>Signup Here</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* <!-- mobile button goes here --> */}
-            <div className="md:hidden flex items-center">
-              <button className="mobile-menu-button">
-                <svg
-                  className="w-6 h-6 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
+        <div className="h-full w-full" onClick={handleOpenModal}>
+          <Image
+            src="/navbar.jpg"
+            alt="Navbar"
+            layout="fill"
+            objectFit="cover"
+            priority 
+          />
         </div>
-        {/* <!-- mobile menu --> */}
-        <div className="mobile-menu hidden md:hidden">
-          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
-            Features
-          </a>
-          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
-            Pricing
-          </a>
-        </div>
-       
-        
       </nav>
-      <div className="relative w-full h-screen"> {/* Added h-screen for full viewport height */}
+
+ 
+      <div className="relative flex-1" onClick={handleOpenModal}> 
         <Image
-          src="/home.jpg"
-          alt="Home"
+          src="/body.jpg"
+          alt="Body"
           layout="fill"
           objectFit="cover"
-          priority // Add this if it's above the fold
+          priority 
         />
       </div>
-    
     </div>
   );
 }
