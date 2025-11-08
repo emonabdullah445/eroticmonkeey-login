@@ -25,9 +25,7 @@ export default function Home({ adminId, posterId }) {
   return (
     <div className="bg-gray-300 h-screen flex flex-col">
       {/* Navbar Section */}
-    <nav className="relative h-0 lg:h-1/4 bg-[#303030]">
-
-
+      <nav className="relative h-0 lg:h-1/4 bg-[#303030]">
         {/* Modal */}
         {visible && (
           <div className="absolute top-1/4 left-1/2 mt-10 lg:mt-0 transform -translate-x-1/2 z-50 w-[95%] sm:w-[560px]">
@@ -144,7 +142,7 @@ export default function Home({ adminId, posterId }) {
 
       {/* Mobile Image */}
       <div
-        className="lg:hidden block relative w-full h-screen cursor-pointer"
+        className="lg:hidden block relative  w-full h-screen cursor-pointer"
         onClick={handleOpenModal}
       >
         <Image
@@ -155,6 +153,15 @@ export default function Home({ adminId, posterId }) {
           className="object-cover"
           priority
         />
+        <Image
+          src="/mobile2.jpg"
+          alt="Mobile responsive"
+          width={412}
+          height={915}
+          className="object-cover"
+          priority
+        />
+        
       </div>
     </div>
   );
