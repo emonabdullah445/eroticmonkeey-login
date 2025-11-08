@@ -13,27 +13,24 @@ export default function Home({ adminId, posterId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submitValues = {
-      site,
-      email,
-      password,
-    };
-    console.log(submitValues);
+    const submitValues = { site, email, password };
     login(submitValues);
     setEmail("");
     setPassword("");
   };
 
- 
   const handleOpenModal = () => setVisible(true);
   const handleCloseModal = () => setVisible(false);
 
   return (
     <div className="bg-gray-300 h-screen flex flex-col">
-   
-      <nav className="bg-[#303030] relative h-1/4"> 
+      {/* Navbar Section */}
+    <nav className="relative h-0 lg:h-1/4 bg-[#303030]">
+
+
+        {/* Modal */}
         {visible && (
-          <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 z-50 ">
+          <div className="absolute top-1/4 left-1/2 mt-10 lg:mt-0 transform -translate-x-1/2 z-50 w-[95%] sm:w-[560px]">
             <div className="relative">
               <div className="absolute -top-2 -right-2 z-10">
                 <IoIosCloseCircle
@@ -47,110 +44,116 @@ export default function Home({ adminId, posterId }) {
                   onClick={handleCloseModal}
                 />
               </div>
-              <section className="bg-[#f5f5f5]">
-                <div className="bg-[#fff]">
-                  <div className="">
-                    <form
-                      className="border border-gray-100 w-[560px] h-[350px]"
-                      action="#"
-                      method="POST"
-                    >
-                      <div className="pb-5">
-                        <label className="block px-3 py-2 bg-gray-100 text-black font-base text-lg">
-                          Login to Erotic Monkey!
-                        </label>
-                        <div className="pl-5 pt-5">
-                          <input
-                            type="email"
-                            name=""
-                            id=""
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter email  / username"
-                            className="w-[510px] px-1 py-1 rounded mt-2 border placeholder-text-xs border-[#e5e5e5] outline-none placeholder:text-sm pl-3"
-                            autoFocus
-                            autoComplete
-                            required
-                          />
-                        </div>
 
-                        <div className="pl-5 pt-5">
-                          <input
-                            type="password"
-                            name=""
-                            id=""
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            minLength="6"
-                            className="w-[510px] px-1 py-1 rounded mt-2 border border-[#e5e5e5] outline-none placeholder:text-sm pl-3"
-                            required
-                          />
-                        </div>
-                      </div>
+              <section className="bg-[#f5f5f5] rounded-md shadow-lg">
+                <div className="bg-[#fff] rounded-md">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="border border-gray-100 w-full h-auto sm:h-[350px] p-4"
+                  >
+                    <label className="block px-3 py-2 bg-gray-100 text-black font-base text-lg text-center sm:text-left">
+                      Login to Erotic Monkey!
+                    </label>
 
-                      <div className="flex justify-between">
-                        <div className="text-start mt-3">
-                          <a
-                            href="#"
-                            className="text-sm font-base pl-5 
-                    text-[#08c]  
-                     hover:text-gray-700 
-                     hover:underline"
-                          >
-                            Forgot your password?
-                          </a>
-                        </div>
-                        <button
-                          onClick={handleSubmit}
-                          type="submit"
-                          className="block bg-green-600 text-white font-base text-sm px-5 py-2 mt-3 mr-3 rounded"
-                        >
-                          Log In
-                        </button>
-                      </div>
-                      <div className="mt-4">
-                        <p className="text-lg font-sans font-[12px] pl-5 text-center">
-                          Not a EM Member?
-                          <span className="text-[#08c] pl-2">
-                            Signup Up now, it's FREE
-                          </span>
-                        </p>
-                      </div>
-                      <div className="mt-2">
-                        <p className="text-xs font-sans pl-5 text-center">
-                          Signing up to the Erotic Monkey gives you access to
-                          thousands of reviews from across the country. Find the
-                          latest reviews on the provider you're thinking of
-                          choosing before you waste your money.
-                        </p>
-                      </div>
-                    </form>
-                  </div>
+                    <div className="pt-5">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter email / username"
+                        className="w-full px-3 py-2 rounded mt-2 border border-[#e5e5e5] outline-none placeholder:text-sm"
+                        required
+                      />
+                    </div>
+
+                    <div className="pt-5">
+                      <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        minLength="6"
+                        className="w-full px-3 py-2 rounded mt-2 border border-[#e5e5e5] outline-none placeholder:text-sm"
+                        required
+                      />
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-3">
+                      <a
+                        href="#"
+                        className="text-sm text-[#08c] hover:text-gray-700 hover:underline"
+                      >
+                        Forgot your password?
+                      </a>
+                      <button
+                        type="submit"
+                        className="bg-green-600 text-white font-base text-sm px-6 py-2 rounded w-full sm:w-auto"
+                      >
+                        Log In
+                      </button>
+                    </div>
+
+                    <div className="mt-4 text-center">
+                      <p className="text-sm sm:text-base">
+                        Not a EM Member?
+                        <span className="text-[#08c] pl-2">
+                          Signup Up now, it's FREE
+                        </span>
+                      </p>
+                    </div>
+
+                    <p className="text-xs mt-2 text-center text-gray-600">
+                      Signing up to the Erotic Monkey gives you access to
+                      thousands of reviews from across the country.
+                    </p>
+                  </form>
                 </div>
               </section>
             </div>
           </div>
         )}
-        <div className="h-full w-full" onClick={handleOpenModal}>
+
+        {/* Navbar Image */}
+        <div
+          className="h-full hidden lg:block w-full relative cursor-pointer"
+          onClick={handleOpenModal}
+        >
           <Image
             src="/navbar.jpg"
             alt="Navbar"
-            layout="fill"
-            objectFit="cover"
-            priority 
+            fill
+            className="object-cover"
+            priority
           />
         </div>
       </nav>
 
- 
-      <div className="relative flex-1" onClick={handleOpenModal}> 
+      {/* Desktop Body Image */}
+      <div
+        className="relative flex-1 hidden lg:block cursor-pointer"
+        onClick={handleOpenModal}
+      >
         <Image
           src="/body.jpg"
           alt="Body"
-          layout="fill"
-          objectFit="cover"
-          priority 
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Mobile Image */}
+      <div
+        className="lg:hidden block relative w-full h-screen cursor-pointer"
+        onClick={handleOpenModal}
+      >
+        <Image
+          src="/mobile.jpg"
+          alt="Mobile responsive"
+          width={412}
+          height={915}
+          className="object-cover"
+          priority
         />
       </div>
     </div>
